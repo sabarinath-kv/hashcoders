@@ -20,10 +20,8 @@ const SidebarMenu: FC<SidebarMenuParams> = ({flow}: SidebarMenuParams) => {
     ];
 
     const userMenuItemArray = [
-        {name: 'Dashboard', icon: '/icons/dashboard.png', page: '/user/home', width: 30, height: 30},
-        {name: 'Choose Spots', icon: '/icons/create-listing.png', page: '/host/create-listing'},
-        {name: 'Upload Media', icon: '/icons/view-listing.png', page: '/host/current-booking'},
-        {name: 'Analysis', icon: '/icons/analysis.png', page: '/host/create-listing'},
+        {name: 'Dashboard', icon: '/icons/dashboard.png', page: '/user/dashboard', width: 30, height: 30},
+        {name: 'Choose Spots', icon: '/icons/create-listing.png', page: '/user/choose-spots'},
         {name: 'Logout', icon: '/icons/logout.png', page: '/', width: 30, height: 30}
     ];
 
@@ -33,11 +31,11 @@ const SidebarMenu: FC<SidebarMenuParams> = ({flow}: SidebarMenuParams) => {
         <Sidebar rootStyles={{minHeight: '89vh', position: 'fixed', bottom: 0, top: 0,
         boxShadow: '0px 0px 32px 0px rgba(136, 152, 170, 0.15)'}}>
             <Image
-                src={'/adhere.png'} 
+                src={'/icons/adhere1.png'} 
                 alt="ADHere" 
                 style={{margin: 20, cursor: 'grab', alignSelf: 'center'}} 
-                width={158} 
-                height={75} 
+                width={200} 
+                height={60}
                 onClick={() => push(flow === 'host' ? '/host/home' : '/user/dashboard')} />
             <Menu>
                 {menuItemArray?.map(((item, index) => (

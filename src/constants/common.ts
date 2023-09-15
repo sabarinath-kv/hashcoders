@@ -42,6 +42,20 @@ export type Listing = {
     supportedFormats: SupportedFormat[]
 }
 
+export type UserAd = {
+  imageUrl: string,
+  title: string,
+  rating: number,
+  type: UnitType,
+  location: string,
+  reach: number,
+  discount: number,
+  pricing: number,
+  isSponsored: boolean,
+  id: number,
+  activeDays?: number;
+}
+
 export const locations = [
   'Kochi',
   'Bengaluru',
@@ -142,7 +156,7 @@ export const defaultListings: Listing[] = [
   name: 'Metro-BillBoard-1',
   visitors: 20,
   uniqueUsers: 10,
-  bounceRate: '20',
+  bounceRate: '10',
   unitType: UnitType.DIGITAL,
   dimension:  "14 x 48",
   location: 'Kakkanad',
@@ -156,82 +170,6 @@ export const defaultListings: Listing[] = [
     }
   ]
 },
-{
-  id: '3',
-  name: 'Metro-BillBoard-1',
-  visitors: 20,
-  uniqueUsers: 10,
-  bounceRate: '20',
-  unitType: UnitType.DIGITAL,
-  dimension:  "14 x 48",
-  location: 'Kakkanad',
-  description: '',
-  supportedFormats: [
-    {
-      format: AdFormat.PNG,
-      rating: '400',
-      availability: 'JAN 1, 2024 - FEB 1, 2024',
-      isBiding: true,
-    }
-  ]
-},
-{
-  id: '4',
-  name: 'Metro-BillBoard-1',
-  visitors: 20,
-  uniqueUsers: 10,
-  bounceRate: '20',
-  unitType: UnitType.DIGITAL,
-  dimension:  "14 x 48",
-  location: 'Kakkanad',
-  description: '',
-  supportedFormats: [
-    {
-      format: AdFormat.PNG,
-      rating: '400',
-      availability: 'JAN 1, 2024 - FEB 1, 2024',
-      isBiding: true,
-    }
-  ]
-},
-{
-  id: '5',
-  name: 'Metro-BillBoard-1',
-  visitors: 20,
-  uniqueUsers: 10,
-  bounceRate: '20',
-  unitType: UnitType.DIGITAL,
-  dimension:  "14 x 48",
-  location: 'Kakkanad',
-  description: '',
-  supportedFormats: [
-    {
-      format: AdFormat.JPEG,
-      rating: '400',
-      availability: 'JAN 1, 2024 - FEB 1, 2024',
-      isBiding: true,
-    }
-  ]
-},
-
-{
-  id: '5',
-  name: 'Metro-BillBoard-1',
-  visitors: 20,
-  uniqueUsers: 10,
-  unitType: UnitType.DIGITAL,
-  dimension:  "14 x 48",
-  location: 'Kakkanad',
-  description: '',
-  supportedFormats: [
-    {
-      format: AdFormat.JPEG,
-      rating: '400',
-      availability: 'JAN 1, 2024 - FEB 1, 2024',
-      isBiding: true,
-    }
-  ]
-}
 ]
 
 export const userAdsColumns = [
@@ -264,12 +202,12 @@ export const userAdsColumns = [
   }, 
 ];
 
-export const UserAdOptionsList = [
+export const UserAdOptionsList: UserAd[] = [
   {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
+      imageUrl: '/user/thumbnail.png',
+      title: 'BillBoard-1',
       rating: 4,
-      type: 'METROS',
+      type: UnitType.BILLBOARDS,
       location: 'Kochi Metro',
       reach: 1.3,
       discount: 15,
@@ -278,10 +216,10 @@ export const UserAdOptionsList = [
       id: 1,
   },
   {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
+      imageUrl: '/user/place2.png',
+      title: 'Delhi metro',
       rating: 4,
-      type: 'METROS',
+      type: UnitType.METROS,
       location: 'Kochi Metro',
       reach: 1.3,
       discount: 15,
@@ -290,10 +228,10 @@ export const UserAdOptionsList = [
       id: 2,
   },
   {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
+      imageUrl: '/user/thumbnail.png',
+      title: 'Kochi metro',
       rating: 4,
-      type: 'METROS',
+      type: UnitType.METROS,
       location: 'Kochi Metro',
       reach: 1.3,
       discount: 15,
@@ -302,10 +240,10 @@ export const UserAdOptionsList = [
       id: 3,
   },
   {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
+      imageUrl: '/user/place1.png',
+      title: 'Ashirvad perumbavoor',
       rating: 4,
-      type: 'METROS',
+      type: UnitType.CINEMAS,
       location: 'Kochi Metro',
       reach: 1.3,
       discount: 15,
@@ -314,10 +252,10 @@ export const UserAdOptionsList = [
       id: 4,
   },
   {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
+      imageUrl: '/user/place2.png',
+      title: 'Kochi metro',
       rating: 4,
-      type: 'METROS',
+      type: UnitType.DIGITAL,
       location: 'Kochi Metro',
       reach: 1.3,
       discount: 15,
@@ -326,10 +264,10 @@ export const UserAdOptionsList = [
       id: 5,
   },
   {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
+    imageUrl: '/user/platform.png',
+      title: 'Singapore airlines',
       rating: 4,
-      type: 'METROS',
+      type: UnitType.FLIGHTS,
       location: 'Kochi Metro',
       reach: 1.3,
       discount: 15,
@@ -338,10 +276,10 @@ export const UserAdOptionsList = [
       id: 6,
   },
   {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
+      imageUrl: '/user/paper.png',
+      title: 'The Hindu',
       rating: 4,
-      type: 'METROS',
+      type: UnitType.NEWSPAPER,
       location: 'Kochi Metro',
       reach: 1.3,
       discount: 15,
@@ -350,10 +288,10 @@ export const UserAdOptionsList = [
       id: 7,
   },
   {
-      imageUrl: '/user/Thumbnail.png',
+    imageUrl: '/user/place2.png',
       title: 'Metro-BillBoard-1',
       rating: 4,
-      type: 'METROS',
+      type: UnitType.METROS,
       location: 'Kochi Metro',
       reach: 1.3,
       discount: 15,
@@ -362,10 +300,10 @@ export const UserAdOptionsList = [
       id: 8,
   },
   {
-      imageUrl: '/user/Thumbnail.png',
+      imageUrl: '/user/place2.png',
       title: 'Metro-BillBoard-1',
       rating: 4,
-      type: 'METROS',
+      type: UnitType.METROS,
       location: 'Kochi Metro',
       reach: 1.3,
       discount: 15,
@@ -373,42 +311,7 @@ export const UserAdOptionsList = [
       isSponsored: false,
       id: 9,
   },
-  {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
-      rating: 4,
-      type: 'METROS',
-      location: 'Kochi Metro',
-      reach: 1.3,
-      discount: 15,
-      pricing: 126,
-      isSponsored: false,
-      id: 10,
-  },
-  {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
-      rating: 4,
-      type: 'METROS',
-      location: 'Kochi Metro',
-      reach: 1.3,
-      discount: 15,
-      pricing: 126,
-      isSponsored: false,
-      id: 11,
-  },
-  {
-      imageUrl: '/user/Thumbnail.png',
-      title: 'Metro-BillBoard-1',
-      rating: 4,
-      type: 'METROS',
-      location: 'Kochi Metro',
-      reach: 1.3,
-      discount: 15,
-      pricing: 126,
-      isSponsored: false,
-      id: 12,
-  }
+  
 ];
 
 export type UserFlow = "user" | "host";

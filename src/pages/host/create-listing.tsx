@@ -71,9 +71,9 @@ const CreateListingPage = () => {
       <PrivateLayout title="CREATE LISTING">
         <Container className="d-flex mt-5 px-5 w-75 flex-column align-items-center">
           <div className="d-flex flex-column justify-content-start">
-            <p style={{ paddingTop: '60px' }} className="text-white">SELECT DISPLAY TYPE</p>
+            <p style={{ paddingTop: '30px' }} className="text-white">SELECT DISPLAY TYPE</p>
             <div style={{ paddingTop: '10px' }} className="d-flex gap-4">
-              {spotList?.map((item, index) => (
+              {spotList.slice(0,8)?.map((item, index) => (
                 <div onClick={() => setUnitType(item.name)} className={greyCardClass} 
                 style={{ backgroundColor: '#F1F1F1',
                 border: `4px solid ${unitType === item.name ? '#2DCE89' : '#F1F1F1'}`,

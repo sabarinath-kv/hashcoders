@@ -2,6 +2,7 @@ import { brandName } from "@/constants/common";
 import Head from "next/head";
 import React, { FC } from "react";
 import Image from 'next/image';
+import Icon from "./Icon";
 
 const PublicLayout: FC<any> = ({ children }) => {
   return (
@@ -23,7 +24,10 @@ const PublicLayout: FC<any> = ({ children }) => {
         padding: '46px',
       }}>
         <div className="d-flex justify-content-between">
-          <img src="logo.png" />
+          <Icon url='/icons/adhere2.png' 
+           width={200} 
+           height={60}
+          />
           <div className="d-flex align-items-center gap-4">
             <a href="/signup" className="d-flex align-items-start gap-2 text-center text-decoration-none">
               <Image
@@ -38,7 +42,7 @@ const PublicLayout: FC<any> = ({ children }) => {
               />
               <p className="text-white">Register</p>
             </a>
-            <a href="/" className="d-flex align-items-start gap-2 text-center text-decoration-none">
+            <a href="/login" className="d-flex align-items-start gap-2 text-center text-decoration-none">
               <Image
                 priority
                 src="/icons/login.svg"

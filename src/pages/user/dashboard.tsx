@@ -3,6 +3,9 @@ import Table from "@/components/Table";
 import PrivateLayout from "@/components/PrivateLayout";
 import UserAdAnalysis from "@/components/UserModule/AdAnalysis";
 import FindYourSpot from "@/components/UserModule/FindYourSpot";
+import { useMemo, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { adListAtom } from "@/states/atom";
 
 const userAdsData = [
   {
@@ -49,6 +52,21 @@ const userAdsData = [
 ]
 
 const UserDashboard = () => {
+  const adList = useRecoilValue(adListAtom);
+
+
+  const tableData = useMemo(() => {
+    return adList?.map((item, index) => 
+      ( {
+        id: item.id,
+        adName: item.title,
+        viewers: item.reach,
+        activeDays: item.activeDays ?? '_',
+        platform: item.type,
+        totalInvestment: `${((100 - item.discount) * item.pricing) / 100} INR`,
+      })
+    )
+  }, [adList])
   return (
     <>
       <PrivateLayout title="DASHBOARD" flow="user">
@@ -59,7 +77,7 @@ const UserDashboard = () => {
             </div>
             <Table title="MY ADS"
             columns={userAdsColumns}
-            data={userAdsData} />
+            data={tableData} />
         </>
       </PrivateLayout>
     </>

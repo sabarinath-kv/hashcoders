@@ -1,12 +1,12 @@
 import Icon from "@/components/Icon";
 import PrivateLayout from "@/components/PrivateLayout";
-import { AdFormat, SupportedFormat } from "@/constants/common";
-import { listingAtom } from "@/states/atom";
+import { AdFormat, SupportedFormat, UserAdOptionsList } from "@/constants/common";
+import { adListAtom, listingAtom, targetAdIdListAtom } from "@/states/atom";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Container, Dropdown, Form } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 
 const availableFormats = ['MP4', 'JPEG 81*81', 'JPEG 330*330', 'JPEG 1080*1080'];
 
@@ -20,16 +20,20 @@ const UploadAdMedia = () => {
 
   const [isLoading, setIsLoading] = useState(false);
 
-  const [listing, setListing] = useRecoilState(listingAtom);
+  const [adIds, setAdIds] = useRecoilState(targetAdIdListAtom);
+  const [adList, setAdList] = useRecoilState(adListAtom);
 
-  const { back } = useRouter();
+  const { push } = useRouter();
 
   const onSubmit = () => {
     setIsLoading(true);
+    const newAds = UserAdOptionsList.filter((item) => adIds.includes(item.id))
+    setAdList((prevList) => [...newAds, ...prevList]);
+    setAdIds([]);
     setTimeout(() => {
       setIsLoading(false);
     }, 500);
-    back();
+    push('/user/dashboard');
   }
 
   return (

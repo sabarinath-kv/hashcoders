@@ -72,7 +72,7 @@ const AdTargetCard: FC<AdTargetCardParams> = ({
             </span>
           </div>
           <div className="d-flex align-items-center">
-            <Icon url="/user/map.png" width={14} height={14} />
+            <Icon url="/user/map.png" width={11} height={14} />
             <span style={{marginLeft: '10px'}}>{location}</span>
           </div>
           <div className="d-flex justify-content-between">
