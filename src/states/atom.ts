@@ -1,3 +1,4 @@
+import { Listing, SupportedFormat, UnitType, defaultListings } from "@/constants/common";
 import { atom } from "recoil";
 
 export const userAtom = atom<{
@@ -6,4 +7,9 @@ export const userAtom = atom<{
 } | null>({
     key: 'user',
     default: null
+});
+
+export const listingAtom = atom<Listing[]>({
+    key: 'listing',
+    default: defaultListings
 });

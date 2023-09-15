@@ -47,7 +47,7 @@ const DoughnutChart: FC<DoughnutChartParams> = ({
          ctx.textBaseline = "top";
          const text = innerText,
          textX = Math.round((width - ctx.measureText(text).width) / 2),
-         textY = height / 2;
+         textY = height/1.75;
          ctx.fillText(text, textX, textY);
          ctx.save();
     } 

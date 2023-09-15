@@ -1,4 +1,4 @@
-import { platformListingColumns } from "@/constants/common";
+import { Listing, platformListingColumns } from "@/constants/common";
 import Table from "@/components/Table";
 import Icon from "@/components/Icon";
 import PrivateLayout from "@/components/PrivateLayout";
@@ -6,49 +6,34 @@ import SummaryCard from "@/components/SummaryCard";
 import LineChart from "@/components/Charts/LineChart";
 import CreateListing from "@/components/CreateListing";
 import CustomModal from '@/components/Modal';
-import { useState } from "react";
-
-const platformListingData = [
-  {
-    id: 1,
-    listingName: 'Beetlejuice',
-    visitors: '20',
-    uniqueUsers: '10',
-    bounceRate: <div className="gap-2 d-flex align-items-start"><Icon url='/icons/up.png' width={15} height={15} /><p>30%</p></div>,
-  },
-  {
-    id: 2,
-    listingName: 'Beetlejuice',
-    visitors: '30',
-    uniqueUsers: '10',
-    bounceRate: <div className="gap-2 d-flex"><Icon url='/icons/up.png' width={15} height={15} /><p>30%</p></div>,
-  },
-  {
-    id: 2,
-    listingName: 'Beetlejuice',
-    visitors: '30',
-    uniqueUsers: '10',
-    bounceRate: <div className="gap-2 d-flex"><Icon url='/icons/up.png' width={15} height={15} /><p>30%</p></div>,
-  },
-  {
-    id: 2,
-    listingName: 'Beetlejuice',
-    visitors: '30',
-    uniqueUsers: '10',
-    bounceRate: <div className="gap-2 d-flex"><Icon url='/icons/up.png' width={15} height={15} /><p>30%</p></div>,
-  },
-
-  {
-    id: 2,
-    listingName: 'Beetlejuice',
-    visitors: '30',
-    uniqueUsers: '10',
-    bounceRate: <div className="gap-2 d-flex"><Icon url='/icons/up.png' width={15} height={15} /><p>30%</p></div>,
-  },
-]
+import { useEffect, useMemo, useState } from "react";
+import { useRecoilValue } from "recoil";
+import { listingAtom } from "@/states/atom";
 
 export default function Home() {
   const [show, setShow] = useState(false);
+  const listing = useRecoilValue(listingAtom);
+  const [selectedListing, setSelectedListing] = useState<Listing>();
+
+  const tableData = useMemo(() => {
+    return listing?.map((item, index) => 
+      ({
+        id: item.id,
+        listingName: item?.name,
+        type: item.unitType,
+        visitors: item?.visitors ?? 0,
+        uniqueUsers: item?.uniqueUsers ?? 0,
+        bounceRate: item?.bounceRate ? <div className="gap-2 d-flex"><Icon url='/icons/up.png' width={15} height={15} /><p>{item?.bounceRate}</p></div> : '-----------',
+      })
+    )
+  }, [listing])
+
+  const onRowClick = (id: string) => {
+    const selectedItem = listing.find((item) => item.id === id);
+    setSelectedListing(selectedItem);
+    setShow(true);
+  }
+
   return (
     <>
       <PrivateLayout title="DASHBOARD">
@@ -58,12 +43,17 @@ export default function Home() {
             <LineChart />
             <CreateListing />
             </div>
-            <Table onRowClick={(row) => setShow(true)} title="Platform Listing"
+            {tableData?.length ? <Table onRowClick={(row) => {
+              onRowClick(row.id)
+           }} title="Platform Listing"
             columns={platformListingColumns}
-            data={platformListingData} />
+            data={tableData} /> : null}
         </>
       </PrivateLayout>
-      <CustomModal setShow={setShow} show={show} />
+      {selectedListing ? <CustomModal listing={selectedListing} setShow={() => {
+        setShow(false);
+        setSelectedListing(undefined);
+      }} show={show} /> : null}
     </>
   );
 }
