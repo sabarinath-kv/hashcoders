@@ -13,3 +13,8 @@ export const listingAtom = atom<Listing[]>({
     key: 'listing',
     default: defaultListings
 });
+
+export const targetAdIdListAtom = atom<number[]>({
+    key: 'targetAdId',
+    default: []
+});
