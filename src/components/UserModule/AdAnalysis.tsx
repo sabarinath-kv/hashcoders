@@ -25,16 +25,16 @@ const UserAdAnalysis: FC = () => {
                     </div>
                 </div>
                 <DoughnutChart 
-                    labels={['18-25', '25-30', '30-40', '40+']}
+                    labels={['DIGITAL', 'METRO', 'TRAIN', 'CINEMA']}
                     percentages={[20, 40, 20, 20,]}
                     title="PLATFORM / INVESTMENT"
-                    innerText="325KINR"
+                    innerText="325K INR"
                 />
                 <DoughnutChart
-                    labels={['a', 'b', 'c', 'd']}
+                    labels={['DIGITAL', 'METRO', 'TRAIN', 'CINEMA']}
                     percentages={[20, 40, 20, 20]}
                     title="PLATFORM / VIEWS"
-                    innerText="3256"
+                    innerText="3256 VIEWS"
                 />
             </div>
         </div>

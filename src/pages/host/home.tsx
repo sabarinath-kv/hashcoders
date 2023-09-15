@@ -23,7 +23,7 @@ export default function Home() {
         type: item.unitType,
         visitors: item?.visitors ?? 0,
         uniqueUsers: item?.uniqueUsers ?? 0,
-        bounceRate: item?.bounceRate ? <div className="gap-2 d-flex"><Icon url='/icons/up.png' width={15} height={15} /><p>{item?.bounceRate}</p></div> : '-----------',
+        bounceRate: item?.bounceRate ? <div className="gap-2 d-flex"><Icon url={item.id == '2' ? '/icons/down.png' : '/icons/up.png'} width={15} height={15} /><p>{item?.bounceRate}</p></div> : '-----------',
       })
     )
   }, [listing])
