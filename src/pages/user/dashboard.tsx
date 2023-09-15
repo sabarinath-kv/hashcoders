@@ -51,7 +51,7 @@ const userAdsData = [
 const UserDashboard = () => {
   return (
     <>
-      <PrivateLayout title="DASHBOARD">
+      <PrivateLayout title="DASHBOARD" flow="user">
         <>
           <div style={{justifyContent: 'center', display: 'flex', margin: '30px 0px 30px 0px'}}>
             <UserAdAnalysis />
