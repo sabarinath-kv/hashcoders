@@ -5,7 +5,7 @@ interface TableProps {
     columns: TableColumn<any>[]
     data: any[],
     title: string;
-    onRowClick: (row: any) => void;
+    onRowClick?: (row: any) => void;
 }
 
 const Table: FC<TableProps> = ({columns, data, title, onRowClick}) => {
