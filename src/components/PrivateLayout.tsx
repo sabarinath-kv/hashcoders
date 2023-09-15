@@ -1,4 +1,4 @@
-import { brandName } from "@/constants/common";
+import { UserFlow, brandName } from "@/constants/common";
 import Head from "next/head";
 import { FC } from "react";
 import Image from 'next/image';
@@ -10,7 +10,7 @@ type PrivateLayoutProps = {
     title?: string;
     children?: JSX.Element;
     backgroundColor?: string;
-    flow?: "user" | "host";
+    flow?: UserFlow;
 }
 
 const PrivateLayout: FC<PrivateLayoutProps> = ({ children, title, backgroundColor = "", flow = "host" }) => {

@@ -3,9 +3,10 @@ import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
 import Icon from './Icon';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
+import { UserFlow } from '@/constants/common';
 
 type SidebarMenuParams = {
-    flow:  "user" | "host";
+    flow: UserFlow;
 };
 
 const SidebarMenu: FC<SidebarMenuParams> = ({flow}: SidebarMenuParams) => {
