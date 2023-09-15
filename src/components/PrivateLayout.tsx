@@ -10,10 +10,12 @@ type PrivateLayoutProps = {
     title?: string;
     children?: JSX.Element;
     backgroundColor?: string;
+    flow?: "user" | "host";
 }
 
-const PrivateLayout: FC<PrivateLayoutProps> = ({ children, title, backgroundColor = "" }) => {
+const PrivateLayout: FC<PrivateLayoutProps> = ({ children, title, backgroundColor = "", flow = "host" }) => {
     const user = useRecoilValue(userAtom);
+
     return (
         <>
             <Head>
@@ -23,7 +25,7 @@ const PrivateLayout: FC<PrivateLayoutProps> = ({ children, title, backgroundColo
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className="d-flex">
-                <SidebarMenu />
+                <SidebarMenu flow={flow} />
                 <div style={{
                        background: `url(/icons/private-layout-bg.png) no-repeat`,
                        backgroundSize: '100%',
