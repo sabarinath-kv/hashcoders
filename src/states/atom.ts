@@ -1,4 +1,4 @@
-import { Listing, SupportedFormat, UnitType, defaultListings } from "@/constants/common";
+import { Listing, SupportedFormat, UnitType, UserFlow, defaultListings } from "@/constants/common";
 import { atom } from "recoil";
 
 export const userAtom = atom<{
@@ -18,3 +18,8 @@ export const targetAdIdListAtom = atom<number[]>({
     key: 'targetAdId',
     default: []
 });
+
+export const userFlowAtom = atom<UserFlow>({
+    key: 'userFlow',
+    default: "host"
+})

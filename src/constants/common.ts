@@ -1,4 +1,4 @@
-export const brandName = 'HashCoders'
+export const brandName = 'ADHere'
 
 export enum UnitType {
     PHYSICAL = 'PHYSICAL',
@@ -410,3 +410,5 @@ export const UserAdOptionsList = [
       id: 12,
   }
 ];
+
+export type UserFlow = "user" | "host";
