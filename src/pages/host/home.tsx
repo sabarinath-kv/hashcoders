@@ -4,7 +4,7 @@ import Icon from "@/components/Icon";
 import PrivateLayout from "@/components/PrivateLayout";
 import SummaryCard from "@/components/SummaryCard";
 import LineChart from "@/components/Charts/LineChart";
-import CreateListing from "@/components/createListing";
+import CreateListing from "@/components/CreateListing";
 import CustomModal from '@/components/Modal';
 import { useState } from "react";
 

@@ -6,8 +6,8 @@ import { useRouter } from 'next/router';
 const SidebarMenu: FC = () => {
     const menuItemArray = [
         {name: 'Dashboard', icon: '/icons/dashboard.png', page: '/host/create-listing', width: 30, height: 30},
-        {name: 'Create Listing', icon: '/icons/host/create-listing.png', page: '/host/create-listing'},
-        {name: 'View Listing', icon: '/icons/view-listing.png', page: '/host/create-listing'},
+        {name: 'Create Listing', icon: '/icons/create-listing.png', page: '/host/create-listing'},
+        {name: 'Current Booking', icon: '/icons/view-listing.png', page: '/host/current-booking'},
         {name: 'Analysis', icon: '/icons/analysis.png', page: '/host/create-listing'},
         {name: 'Logout', icon: '/icons/logout.png', page: '/host/create-listing', width: 30, height: 30}
     ];
