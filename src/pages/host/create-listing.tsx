@@ -1,13 +1,16 @@
 import Icon from "@/components/Icon";
 import PrivateLayout from "@/components/PrivateLayout";
 import SupportedFormats from "@/components/SupportedFormats";
-import { AdFormat, Listing, SupportedFormat, UnitType, formats, locations } from "@/constants/common";
+import { AdFormat, Listing, SupportedFormat, UnitType, formats, locations, spotList } from "@/constants/common";
 import { listingAtom } from "@/states/atom";
 import { useRouter } from "next/router";
 import { useEffect, useMemo, useState } from "react";
 import { Container, Dropdown, Form } from "react-bootstrap";
+import { PlusCircleFill } from "react-bootstrap-icons";
 import Button from 'react-bootstrap/Button';
 import { useRecoilState } from "recoil";
+
+const greyCardClass = "rounded shadow-sm d-flex flex-column justify-content-center align-items-center mb-2";
 
 const CreateListingPage = () => {
   const [unitType, setUnitType] = useState<UnitType>(UnitType.DIGITAL);
@@ -30,6 +33,7 @@ const CreateListingPage = () => {
 
   const addNew = () => {
     setSupportedFormats((items) => {
+      console.log((items.length - 1) % (formats.length - 1));
       return [...items, {
         format: formats[(items.length - 1) % (formats.length - 1)]
       }]
@@ -53,8 +57,8 @@ const CreateListingPage = () => {
         location,
         description,
         supportedFormats
-      }, 
-    ...prevList]
+      },
+      ...prevList]
     });
     setTimeout(() => {
       setIsLoading(false);
@@ -65,34 +69,22 @@ const CreateListingPage = () => {
   return (
     <>
       <PrivateLayout title="CREATE LISTING">
-        <Container className="d-flex px-5 w-75 flex-column align-items-center">
-          <Container className="d-flex justify-content-around my-5">
-            <div className="bg-light p-4 rounded" style={unitType === UnitType.DIGITAL ?
-              { borderColor: 'black', borderWidth: 5, border: 'solid' }
-              : { opacity: 0.5 }}
-            >
-              <div className="p-2 rounded" style={{ backgroundColor: '#D9D9D9' }}>
-                <Icon url="/icons/digital.png" width={60} height={60} />
-              </div>
+        <Container className="d-flex mt-5 px-5 w-75 flex-column align-items-center">
+          <div className="d-flex flex-column justify-content-start">
+            <p style={{ paddingTop: '60px' }} className="text-white">SELECT DISPLAY TYPE</p>
+            <div style={{ paddingTop: '10px' }} className="d-flex gap-4">
+              {spotList?.map((item, index) => (
+                <div onClick={() => setUnitType(item.name)} className={greyCardClass} 
+                style={{ backgroundColor: '#F1F1F1',
+                border: `4px solid ${unitType === item.name ? '#2DCE89' : '#F1F1F1'}`,
+                 padding: '40px', marginRight: '16', cursor: 'grab', }}>
+                  <Icon url={item.icon} width={40} height={40} />
+                  <span style={{ fontSize: '10px', marginTop: '5px' }}>{item.name}</span>
+                </div>
+              ))}
             </div>
-            <div className="bg-light p-4 rounded"
-              style={unitType !== UnitType.DIGITAL ? { borderColor: 'black', borderWidth: 5, border: 'solid' } : { opacity: 0.5 }}>
-              <div className="p-2 rounded" style={{ backgroundColor: '#D9D9D9' }}>
-                <Icon url="/icons/physical.png" width={60} height={60} />
-              </div>
-            </div>
-          </Container>
-          <Dropdown className="mt-5 pt-5">
-            <Dropdown.Toggle variant="light" id="dropdown-basic" className="shadow-sm" style={{ minWidth: '200px' }}>
-              {unitType === UnitType.DIGITAL ? 'Digital Billboard' : 'Physical Billboard'}
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu>
-              <Dropdown.Item onClick={() => setUnitType(UnitType.DIGITAL)}>Digital Billboard</Dropdown.Item>
-              <Dropdown.Item onClick={() => setUnitType(UnitType.PHYSICAL)}>Physical Billboard</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          <Container className="mt-4">
+          </div>
+          <Container style={{ paddingTop: '40px' }} className="mt-4">
             <p className="text-secondary">LOCATION INFORMATION</p>
             <Container className="d-flex align-items-center justify-content-around">
               <Form>
@@ -131,19 +123,23 @@ const CreateListingPage = () => {
             <hr style={{ height: 5 }} className="bg-secondary" />
           </Container>
           <Container className="mt-4">
-            <p className="text-secondary">SUPPORTED FORMATS</p>
-            {supportedFormats.map((item, index) => (
-              <SupportedFormats
-                onPlusClick={addNew}
-                supportedFormat={item}
-                onChange={(updatedData) => onChange(index, updatedData)}
-                showPlus={index === supportedFormats.length - 1}
-              />
-            ))}
+            <div style={{ marginBottom: 10 }} className="d-flex justify-content-between align-items-center gap-2">
+              <p className="text-secondary" style={{ margin: 0 }}>SUPPORTED FORMATS</p>
+              {<div onClick={addNew}><Icon url="/icons/add.png" style={{ marginRight: 50 }} /></div>}
+            </div>
+            {supportedFormats.map((item, index) => {
+              return (
+                <SupportedFormats
+                  onPlusClick={addNew}
+                  supportedFormat={item}
+                  onChange={(updatedData) => onChange(index, updatedData)}
+                  showPlus={index === supportedFormats.length - 1}
+                />)
+            })}
           </Container>
           <Button
-          disabled={isLoading}
-          onClick={onSubmit}
+            disabled={isLoading}
+            onClick={onSubmit}
             style={{ backgroundColor: '#5E72E4' }}
             className="mt-2"
             variant="primary">
