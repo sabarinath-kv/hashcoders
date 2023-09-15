@@ -1,16 +1,16 @@
 export const brandName = 'HashCoders'
 
 export enum UnitType {
-  PHYSICAL = 'physical',
-  FLIGHTS = 'FLIGHTS',
-  TRAINS = 'TRAINS',
-  CINEMAS = 'CINEMAS',
-  METROS = 'METROS',
-  OUTDOORS = 'OUTDOORS',
-  DIGITAL = 'DIGITAL',
-  SPORTS = 'SPORTS',
-  BILLBOARDS = 'BILLBOARDS',
-  NEWSPAPER = 'NEWSPAPER'
+    PHYSICAL = 'PHYSICAL',
+    FLIGHTS = 'FLIGHTS',
+    TRAINS = 'TRAINS',
+    CINEMAS = 'CINEMAS',
+    METROS = 'METROS',
+    OUTDOORS = 'OUTDOORS',
+    DIGITAL = 'DIGITAL',
+    SPORTS = 'SPORTS',
+    BILLBOARDS = 'BILLBOARDS',
+    NEWSPAPER = 'NEWSPAPER'
  }
 
  export enum AdFormat {
@@ -47,6 +47,45 @@ export const locations = [
   'Bengaluru',
   'Mumbai'
 ]
+
+export const spotList = [
+  {
+      name: UnitType.FLIGHTS,
+      icon: '/icons/user/flights.png'
+  },
+  {
+      name: UnitType.TRAINS,
+      icon: '/icons/user/trains.png'
+  },
+  {
+    name: UnitType.DIGITAL,
+    icon: '/icons/user/digitals.png'
+},
+  {
+      name: UnitType.CINEMAS,
+      icon: '/icons/user/cinemas.png'
+  },
+  {
+      name: UnitType.METROS,
+      icon: '/icons/user/metros.png'
+  },
+  {
+      name: UnitType.OUTDOORS,
+      icon: '/icons/user/outdoors.png'
+  },
+  {
+      name: UnitType.SPORTS,
+      icon: '/icons/user/sports.png'
+  },
+  {
+      name: UnitType.BILLBOARDS,
+      icon: '/icons/user/billboards.png'
+  },
+  {
+      name: UnitType.NEWSPAPER,
+      icon: '/icons/user/newspaper.png'
+  }
+];
 
 export const platformListingColumns = [
     {

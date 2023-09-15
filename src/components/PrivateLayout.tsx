@@ -27,16 +27,14 @@ const PrivateLayout: FC<PrivateLayoutProps> = ({ children, title, backgroundColo
             <div className="d-flex">
                 <SidebarMenu flow={flow} />
                 <div style={{
-                       background: `url(/icons/private-layout-bg.png) no-repeat`,
-                       backgroundSize: '100%',
-                       position: 'fixed',
-                       overflowY: 'scroll',
-                       top: '0px',
-                       bottom: 0,
-                       backgroundAttachment: 'scroll',
-                       right: '0px',
-                       left: '250px',
-                       padding: '46px',
+                    background: `url(/icons/private-layout-bg.png) no-repeat`,
+                    backgroundSize: '100%',
+                    width: '2000px',
+                    overflowY: 'scroll',
+                    backgroundAttachment: 'scroll',
+                    right: '0px',
+                    marginLeft: '250px',
+                    padding: '46px',
                 }}>
                     <div className="d-flex justify-content-between">
                         {!!title?.length ? <p className="text-white">{title}</p> : <div />}

@@ -27,7 +27,9 @@ const SupportedFormats: FC<SupportedFormatsParams> = ({
                 ...supportedFormat,
                 format: formats[e.target.value as any] as AdFormat
               })} placeholder="Choose your location" className="d-flex" style={{minWidth: '200px'}}>
-                {formats.map((format, index) =>  <option value={index.toString()}>{format}</option>)}
+                {formats.map((format, index) =>  
+                <option selected={format === supportedFormat.format} 
+                value={index.toString()}>{format}</option>)}
               </Form.Select>
               </Form.Group>
             </Form>
@@ -70,7 +72,6 @@ const SupportedFormats: FC<SupportedFormatsParams> = ({
               </Form.Group>
             </Form>
           </Container>
-          {showPlus && <PlusCircleFill className="flex-end" onClick={onPlusClick} />}
         </Container>
     );
 };

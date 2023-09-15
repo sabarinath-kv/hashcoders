@@ -1,44 +1,6 @@
 import { FC } from "react";
 import Icon from "../Icon";
-
-const spotList = [
-    {
-        name: 'FLIGHTS',
-        icon: '/icons/user/flights.png'
-    },
-    {
-        name: 'TRAINS',
-        icon: '/icons/user/trains.png'
-    },
-    {
-        name: 'CINEMAS',
-        icon: '/icons/user/cinemas.png'
-    },
-    {
-        name: 'METROS',
-        icon: '/icons/user/metros.png'
-    },
-    {
-        name: 'OUTDOORS',
-        icon: '/icons/user/outdoors.png'
-    },
-    {
-        name: 'DIGITAL',
-        icon: '/icons/user/digitals.png'
-    },
-    {
-        name: 'SPORTS',
-        icon: '/icons/user/sports.png'
-    },
-    {
-        name: 'BILLBOARDS',
-        icon: '/icons/user/billboards.png'
-    },
-    {
-        name: 'NEWSPAPER',
-        icon: '/icons/user/newspaper.png'
-    }
-];
+import { spotList } from "@/constants/common";
 
 const FindYourSpot: FC = () => {
     const greyCardClass = "rounded shadow-sm d-flex flex-column justify-content-center align-items-center mb-2";
