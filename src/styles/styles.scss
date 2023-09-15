@@ -1,0 +1,18 @@
+$success: #7952b3;
+
+@import "bootstrap/scss/bootstrap.scss";
+
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  padding: 0;
+  background-color: #F8F9FE;
+}
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: '#ADB5BD';
+  opacity: 0.5; /* Firefox */
+}
+
+.otp::placeholder {
+  text-align: center;
+}
